@@ -20,7 +20,12 @@ app.use(express.json({ limit: "50mb" }));
 app.use(cookieParser());
 
 // cors => cross origin resource sharing (secure thing to use the api or website url for login)
-
+app.use(
+  cors({
+    origin: '*', // Allows all origins (use carefully)
+    credentials: true, // Enable cookies with cross-origin requests
+  })
+);
 // api requests limit
 const limiter = rateLimit({
 	windowMs: 15 * 60 * 1000,
