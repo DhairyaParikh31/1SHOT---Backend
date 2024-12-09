@@ -22,7 +22,7 @@ app.use(cookieParser());
 // cors => cross origin resource sharing (secure thing to use the api or website url for login)
 app.use(
   cors({
-    origin: ["http://localhost:3000"],
+    origin: ["https://1-shot.vercel.app/"],
     credentials: true,
   })
 );
