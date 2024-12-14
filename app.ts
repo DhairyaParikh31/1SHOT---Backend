@@ -22,10 +22,17 @@ app.use(cookieParser());
 // cors => cross origin resource sharing (secure thing to use the api or website url for login)
 app.use(
   cors({
-    origin: '*', // Allows all origins (use carefully)
-    credentials: true, // Enable cookies with cross-origin requests
+    origin: [
+      "http://localhost:3000",        // Local development
+      "https://1-shot.vercel.app",   // Vercel deployment
+    ],
+    credentials: true,                // Enable cookies and credentials
   })
 );
+
+// Handle preflight requests
+app.options("*", cors());
+
 // api requests limit
 const limiter = rateLimit({
 	windowMs: 15 * 60 * 1000,
